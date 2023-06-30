@@ -1,17 +1,22 @@
-import styles from './layout.module.css';
-import Head from 'next/head';
-import Image from 'next/image';
-import utilStyles from '../styles/utils.module.css';
-import Link  from 'next/link';
+import styles from "./layout.module.css";
+import Head from "next/head";
+import Image from "next/image";
+import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
+import React from "react";
 
-const name = 'Ryan';
-export const siteTitle = 'Next.js Sample Website';
+const name = "Ryan";
+export const siteTitle = "Hei,Next Blog";
 
-export default function Layout({children,home}) {
-   
-    return (
-
-        <div className={styles.container}>
+export default function Layout({
+  children,
+  home,
+}: {
+  children: React.ReactNode;
+  home?: boolean;
+}) {
+  return (
+    <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -21,11 +26,11 @@ export default function Layout({children,home}) {
         <meta
           property="og:image"
           content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle,
+            siteTitle
           )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:title" content={siteTitle} />
+        <meta property="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
         {home ? (
@@ -67,5 +72,5 @@ export default function Layout({children,home}) {
         </div>
       )}
     </div>
-    );
+  );
 }
