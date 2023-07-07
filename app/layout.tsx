@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Welcome to Next.js",
+  title: "Default Home",
+  description: "Welcome to Default Layout",
   openGraph: {
-    title: "Next.js",
-    description: "Next.js",
+    title: "Default Layout",
+    description: "Default Layout Description",
     type: "website",
     locale: "zh_CN",
   },
