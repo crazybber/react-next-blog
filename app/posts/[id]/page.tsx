@@ -2,7 +2,8 @@ import Layout from "../../../components/layout";
 import { getAllPostIds, getPostData } from "../../../lib/posts";
 import Head from "next/head";
 import Date from "../../../components/date";
-import utilStyles from "../../styles/utils.module.css";
+import utilStyles from "../../../styles/utils.module.css";
+
 import {  GetStaticPaths } from "next";
 
 export default async function Page({ params }) {
@@ -14,7 +15,7 @@ export function Post({
   postData,
 }: {
   postData: {
-    title: string;
+    id: string;
     date: string;
     contentHtml: string;
   };
@@ -23,11 +24,11 @@ export function Post({
   return (
     <Layout>
       <Head>
-        <title>{postData.title}</title>
+        <title>{postData.id}</title>
       </Head>
 
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+        <h1 className={utilStyles.headingXl}>{postData.id}</h1>
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
