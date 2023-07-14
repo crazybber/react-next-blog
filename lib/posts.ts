@@ -78,11 +78,10 @@ export async function getPostData(id: string) {
 
   const contentHtml = processedContent.toString();
 
-
   return {
     id,
     contentHtml,
-    ...matterResult.data
-  };
+    ...matterResult.data as {title:string; date:string}
+  } ;
 
 }

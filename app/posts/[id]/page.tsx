@@ -15,7 +15,7 @@ export function Post({
   postData,
 }: {
   postData: {
-    id: string;
+    title: string;
     date: string;
     contentHtml: string;
   };
@@ -24,11 +24,11 @@ export function Post({
   return (
     <Layout>
       <Head>
-        <title>{postData.id}</title>
+        <title>{postData.title}</title>
       </Head>
 
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.id}</h1>
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
