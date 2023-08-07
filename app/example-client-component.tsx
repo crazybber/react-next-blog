@@ -11,5 +11,4 @@ export default function ExampleClientComponent(){
 
     const searchParams = useSearchParams();
 
-
 }
