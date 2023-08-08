@@ -4,7 +4,6 @@ import Head from "next/head";
 import Date from "../../../components/date";
 import utilStyles from "../../../styles/utils.module.css";
 
-import {  GetStaticPaths } from "next";
 
 export default async function Page({ params }) {
   const postData = await getPostData(params.id as string);
@@ -38,10 +37,7 @@ export function Post({
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const generateStaticParams  = async () => {
   const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
+  return [...paths];
 };
