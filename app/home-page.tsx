@@ -21,6 +21,7 @@ export default function Home({
       </Head>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <p>[This a test Ryan Article]</p>
+        <p>[This a Default App Home Page]</p>
         <h2 className={utilStyles.HeadLg}>Blog</h2>
         <ul>
           {allPostsData.map(({ id, date, title }) => (
@@ -35,7 +36,7 @@ export default function Home({
         </ul>
 
         <p>
-          (This is a sample website - you’ll be building a site like this on{" "}
+          (This is a website - you’ll be building a site like this on{"-"}
           <a href="https://nextjs.org/learn"> Next.js tutorial</a>.)
         </p>
       </section>

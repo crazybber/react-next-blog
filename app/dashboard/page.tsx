@@ -2,7 +2,7 @@ import { cookies, headers } from "next/headers";
 
 async function getData() {
   const authHeader = headers().get("authorization");
-  const res = await fetch("https://...", { cache: "no-store" });
+  const res = await fetch("https://localhost:3000/api/projects", { cache: "no-store" });
   const projects = await res.json();
   return {
     authHeader,

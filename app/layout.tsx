@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import React from "react";
+import '../styles/globals.css'
 
 export const metadata: Metadata = {
-  title: "Default Home",
+  title: "Default Layout",
   description: "Welcome to Default Layout",
   openGraph: {
     title: "Default Layout",
