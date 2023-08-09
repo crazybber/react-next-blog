@@ -3,7 +3,7 @@
 import { useRouter,usePathname,useSearchParams } from "next/navigation";
 
 
-export default function ExampleClientComponent(){
+export default function ExampleClient(){
 
     const  router= useRouter();
 
