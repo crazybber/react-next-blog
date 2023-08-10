@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import  HomePage  from "./home-page";
-import { getSortedPostsData } from "../lib/posts";
+import  HomePage  from "@app/home-page";
+import { getSortedPostsData } from "@lib/posts";
 export const metadata: Metadata = {
     title: "Home Page Root",
     description: "Page Root description",

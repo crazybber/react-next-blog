@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
-import '../styles/global.css';
+import '@styles/global.css';
 
 export const metadata: Metadata = {
   title: "Default Layout",
