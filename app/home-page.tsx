@@ -3,6 +3,7 @@ import Layout, { siteTitle } from "@components/layout";
 import utilStyles from "@styles/utils.module.css";
 import Link from "next/link";
 import Date from "@components/date";
+import CTAButton from '@components/ctabutton';
 
 export default function Home({
   allPostsData,
@@ -39,6 +40,14 @@ export default function Home({
           (This is a website - you’ll be building a site like this on{"-"}
           <a href="https://nextjs.org/learn"> Next.js tutorial</a>.)
         </p>
+      </section>
+
+      <section>
+      <div className="py-20">
+        <h1 className="text-center">
+          <CTAButton/>
+        </h1>
+      </div>
       </section>
     </Layout>
   );

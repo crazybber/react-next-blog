@@ -9,7 +9,6 @@ async function getData() {
     projects,
   };
 }
-
 export default async function Dashboard() {
   const projects= (await getData()).projects;
 
