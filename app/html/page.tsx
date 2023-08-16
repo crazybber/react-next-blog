@@ -1,5 +1,4 @@
 import React from "react";
-
 import { SVGButton } from "@components/icons";
 
 export default async function HtmlLayout() {
@@ -8,7 +7,7 @@ export default async function HtmlLayout() {
             <div className=" w-full max-w-7xl">
                 <div x-data="{ open: false }" className="flex flex-col max-w-screen-xl p-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
                     <div className="flex flex-row items-center justify-between lg:justify-start">
-                        <a className="text-lg font-bold tracking-tighter text-blue-600 transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8" href="/groups/header/"> wickedblocks </a>
+                        <a className="text-lg font-bold tracking-tighter text-blue-600 transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8" href="/groups/header/"> MENU </a>
                         <button className="rounded-lg md:hidden focus:outline-none focus:shadow-outline">
                             <SVGButton />
                         </button>
@@ -23,19 +22,13 @@ export default async function HtmlLayout() {
                                 <a href="#" className="px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] md:px-3 text-gray-500 hover:text-blue-500 hover:border-blue-600"> FAQ </a>
                             </li>
                             <li>
-                                <a href="https://www.wickedtemplates.com/" className="px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] md:px-3 text-gray-500 hover:text-blue-500"> Free <span className="hidden lg:inline">Templates </span>
+                                <a href="https://www.wickedtemplates.com/" className="px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] md:px-3 text-gray-500 hover:text-blue-500"> 
+                                Free <span className="hidden lg:inline">Templates </span>
                                 </a>
                             </li>
                         </ul>
                     </nav>
                 </div>
-            </div>
-
-
-            <div className="flex space-x-4">
-                <div className="flex-1 ...">Hello Flex1</div>
-                <div className="flex-1 ...">Hello Flex2</div>
-                <div className="flex-1 ...">Hello Flex3</div>
             </div>
 
             <div className="flex justify-center items-center h-screen bg-green-100">
