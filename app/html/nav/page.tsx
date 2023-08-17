@@ -23,6 +23,15 @@ export default async function HtmlLayout() {
                                     Free <span className="hidden lg:inline">Templates </span>
                                 </a>
                             </li>
+                            <li>
+                                <div className="absolute right-0 z-30 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48" style={{ display: "none" }}>
+                                    <div className="px-2 py-2 bg-white rounded-md shadow">
+                                        <a className="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline" href="#">Link #1</a>
+                                        <a className="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline" href="#">Link #2</a>
+                                        <a className="block px-4 py-2 mt-2 text-sm text-gray-500 md:mt-0 hover:text-blue-600 focus:outline-none focus:shadow-outline" href="#">Link #3</a>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                         <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
                             <button className="items-center block px-10 py-2.5 text-base font-medium text-center text-blue-600 transition duration-500 ease-in-out transform border-2 border-white shadow-md rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Sign in</button>
