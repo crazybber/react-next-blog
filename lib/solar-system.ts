@@ -2,6 +2,44 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 
+//setup basic scenario for canvas
+
+//set up scene
+const scene = new THREE.Scene();
+
+//set up camera
+const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 10000);
+camera.position.z = 180;
+
+//set up render
+const renderer= new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+
+document.getElementById('canvas-root')?.appendChild(renderer.domElement);
+
+
+//define stars coordinates
+const starsCoords: number[] =[];
+
+for (let i = 0; i < 1000; i++) {
+    const x = THREE.MathUtils.randFloatSpread(1000);
+    const y = THREE.MathUtils.randFloatSpread(1000);
+    const z = THREE.MathUtils.randFloatSpread(1000);
+    starsCoords.push(x,y,z);
+}
+
+//set up Geometry Object by using starsCoords
+const starsGeometry = new THREE.BufferGeometry();
+starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsCoords, 3));
+
+//add stars to scene
+const starsMaterial = new THREE.PointsMaterial({ color: 0xaaaaaa });
+const stars =new THREE.Points(starsGeometry, starsMaterial);
+scene.add(stars);
+
+
+
 // enum OBJECTS {
 //     SUN = 'sun',
 //     MERCURY = 'mercury',
