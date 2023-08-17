@@ -1,6 +1,12 @@
 
 import * as React from 'react';
 import * as Solar from '@app/lib/solar-system';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Home Page Root",
+    description: "Page Root description",
+}
 
 
 export default function SolarSystem() {
