@@ -2,24 +2,23 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 
-
+//define objects
 enum OBJECTS {
-    SUN = 'sun',
-    MERCURY = 'mercury',
-    VENUS = 'venus',
-    EARTH = 'earth',
-    MOON = 'moon',
-    MARS = 'mars',
-    JUPITER = 'jupiter',
-    SATURN = 'saturn',
-    SATURN_RINGS = 'saturn_rings',
-    URANUS = 'uranus',
-    NEPTUNE = 'neptune',
+    SUN = 'sun', //太阳
+    MERCURY = 'mercury', //水星
+    VENUS = 'venus', //金星
+    EARTH = 'earth', //地球
+    MOON = 'moon', //月亮
+    MARS = 'mars', //火星
+    JUPITER = 'jupiter', //木星
+    SATURN = 'saturn', //土星
+    SATURN_RINGS = 'saturn_rings', //土星环
+    URANUS = 'uranus',// 天王星
+    NEPTUNE = 'neptune', //海王星
 }
 
 
 //setup basic scenario for canvas
-
 
 //set up scene
 const scene = new THREE.Scene();
@@ -58,8 +57,8 @@ scene.add(stars);
 
  class ObjectGroup extends THREE.Group{
 
+    //create object
 static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Mesh{
-
     const objectTexture = new THREE.TextureLoader().load(`textures/${title}.jpg`);
     const objectMaterial = new THREE.MeshPhongMaterial({map: objectTexture});
     const objectMesh = new THREE.Mesh(objectGeometry, objectMaterial);
@@ -70,10 +69,10 @@ static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Me
         super();
         if(extra){
             switch(title){
-                case OBJECTS.EARTH:
+                case OBJECTS.EARTH: //地球
                     extra.position.x += 8 * index + 2.5;
                     break;
-                case OBJECTS.SATURN:
+                case OBJECTS.SATURN: //土星
                     extra.position.x += 8 * index;
                     extra.rotation.x = 2;
                     break;
@@ -81,6 +80,9 @@ static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Me
             this.add(extra);
         }
         
+        const planet = ObjectGroup.createObject(title, new THREE.SphereGeometry(radius, 64, 32));
+        planet.position.x += 8* index;
+        this.add(planet);
     }
 
 
@@ -91,39 +93,15 @@ static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Me
  const sun = ObjectGroup.createObject(OBJECTS.SUN, new THREE.SphereGeometry(11, 64, 32));
  scene.add(sun);
 
+//add planet
 
-// class ObjectGroup extends THREE.Group {
-//     constructor(index: number, title: OBJECTS, radius: number, extra?: THREE.Mesh) {
-//         super();
-
-//         if (extra) {
-//             switch (title) {
-//                 case OBJECTS.EARTH:
-//                     extra.position.x += 8 * index + 2.5;
-//                     break;
-//                 case OBJECTS.SATURN:
-//                     extra.position.x += 8 * index;
-//                     extra.rotation.x = 2;
-//                     break;
-//             }
-
-//             this.add(extra);
-//         }
-
-//         const planet = ObjectGroup.createObject(title, new THREE.SphereGeometry(radius, 64, 32));
-
-//         planet.position.x += 8 * index;
-//         this.add(planet);
-//     }
-
-//     private static createObject(title: OBJECTS, objectGeometry: THREE.Geometry): THREE.Mesh {
-//         const objectTexture = new THREE.TextureLoader().load(`textures/${title}.jpg`);
-//         const objectMaterial = new THREE.MeshPhongMaterial({ map: objectTexture });
-//         const objectMesh = new THREE.Mesh(objectGeometry, objectMaterial);
-
-//         return objectMesh;
-//     }
+//const planetMap = new Map();
+// const planetsMap = new Map<OBJECTS, ObjectGroup>();
+// for (let [index, {title:OBJECTS,radius:number,extra:THREE.Mesh}] of Object.entries()){
+//     const planet = ObjectGroup.createObject(title, new THREE.SphereGeometry(radius, 64, 32));
+ 
 // }
+
 
 // const planets: { title: OBJECTS; radius: number; extra?: THREE.Mesh }[] = [
 //     { title: OBJECTS.MERCURY, radius: 1 },
@@ -144,16 +122,7 @@ static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Me
 //     { title: OBJECTS.NEPTUNE, radius: 3 },
 // ];
 
-// const scene = new THREE.Scene();
-// const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-// camera.position.z = 180;
-
-// const renderer = new THREE.WebGLRenderer();
-
-// renderer.setSize(window.innerWidth, window.innerHeight);
-// renderer.setPixelRatio(window.devicePixelRatio);
-// document.getElementById('root')!.appendChild(renderer.domElement);
 
 // const ambientLight = new THREE.AmbientLight(0xaaaaaa, 1);
 // const pointLight = new THREE.PointLight(0xffffff, 1);
@@ -172,14 +141,7 @@ static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Me
 //     starsCoords.push(x, y, z);
 // }
 
-// const starsGeometry = new THREE.BufferGeometry();
 
-// starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starsCoords, 3));
-
-// const starsMaterial = new THREE.PointsMaterial({ color: 0xaaaaaa });
-// const stars = new THREE.Points(starsGeometry, starsMaterial);
-
-// scene.add(stars);
 
 // const sun = ObjectGroup.createObject(OBJECTS.SUN, new THREE.SphereGeometry(11, 64, 32));
 
