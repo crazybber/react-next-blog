@@ -2,7 +2,24 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 
+
+enum OBJECTS {
+    SUN = 'sun',
+    MERCURY = 'mercury',
+    VENUS = 'venus',
+    EARTH = 'earth',
+    MOON = 'moon',
+    MARS = 'mars',
+    JUPITER = 'jupiter',
+    SATURN = 'saturn',
+    SATURN_RINGS = 'saturn_rings',
+    URANUS = 'uranus',
+    NEPTUNE = 'neptune',
+}
+
+
 //setup basic scenario for canvas
+
 
 //set up scene
 const scene = new THREE.Scene();
@@ -39,20 +56,41 @@ const stars =new THREE.Points(starsGeometry, starsMaterial);
 scene.add(stars);
 
 
+ class ObjectGroup extends THREE.Group{
 
-// enum OBJECTS {
-//     SUN = 'sun',
-//     MERCURY = 'mercury',
-//     VENUS = 'venus',
-//     EARTH = 'earth',
-//     MOON = 'moon',
-//     MARS = 'mars',
-//     JUPITER = 'jupiter',
-//     SATURN = 'saturn',
-//     SATURN_RINGS = 'saturn_rings',
-//     URANUS = 'uranus',
-//     NEPTUNE = 'neptune',
-// }
+static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Mesh{
+
+    const objectTexture = new THREE.TextureLoader().load(`textures/${title}.jpg`);
+    const objectMaterial = new THREE.MeshPhongMaterial({map: objectTexture});
+    const objectMesh = new THREE.Mesh(objectGeometry, objectMaterial);
+    return objectMesh;
+   }
+
+    constructor(index:number,title:OBJECTS,radius:number,color:number,extra?:THREE.Mesh){
+        super();
+        if(extra){
+            switch(title){
+                case OBJECTS.EARTH:
+                    extra.position.x += 8 * index + 2.5;
+                    break;
+                case OBJECTS.SATURN:
+                    extra.position.x += 8 * index;
+                    extra.rotation.x = 2;
+                    break;
+            }
+            this.add(extra);
+        }
+        
+    }
+
+
+
+ }
+
+ //add sun
+ const sun = ObjectGroup.createObject(OBJECTS.SUN, new THREE.SphereGeometry(11, 64, 32));
+ scene.add(sun);
+
 
 // class ObjectGroup extends THREE.Group {
 //     constructor(index: number, title: OBJECTS, radius: number, extra?: THREE.Mesh) {
