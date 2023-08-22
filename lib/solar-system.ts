@@ -65,7 +65,7 @@ static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Me
     return objectMesh;
    }
 
-    constructor(index:number,title:OBJECTS,radius:number,color:number,extra?:THREE.Mesh){
+    constructor(index:number,title:OBJECTS,radius:number,extra?:THREE.Mesh){
         super();
         if(extra){
             switch(title){
@@ -93,68 +93,43 @@ static createObject(title:OBJECTS, objectGeometry:THREE.BufferGeometry):THREE.Me
  const sun = ObjectGroup.createObject(OBJECTS.SUN, new THREE.SphereGeometry(11, 64, 32));
  scene.add(sun);
 
+const planets: { title: OBJECTS; radius: number; extra?: THREE.Mesh }[] = [
+    { title: OBJECTS.MERCURY, radius: 1 },
+    { title: OBJECTS.VENUS, radius: 2 },
+    {
+        title:OBJECTS.EARTH, 
+        radius: 2, 
+        extra: ObjectGroup.createObject(OBJECTS.MOON, new THREE.SphereGeometry(0.5, 64, 32))
+    },
+    { title: OBJECTS.MARS, radius: 1 },
+    { title: OBJECTS.JUPITER, radius: 5 },
+    {
+        title:OBJECTS.SATURN, 
+        radius: 4, 
+        extra: ObjectGroup.createObject(OBJECTS.SATURN_RINGS, new THREE.TorusGeometry(6, 1, 2, 32))
+    },
+    { title: OBJECTS.URANUS, radius: 3 },
+    { title: OBJECTS.NEPTUNE, radius: 3 },
+];
+
+
+
 //add planet
+const planetsMap = new Map<OBJECTS, ObjectGroup>();
 
-//const planetMap = new Map();
-// const planetsMap = new Map<OBJECTS, ObjectGroup>();
-// for (let [index, {title:OBJECTS,radius:number,extra:THREE.Mesh}] of Object.entries()){
-//     const planet = ObjectGroup.createObject(title, new THREE.SphereGeometry(radius, 64, 32));
- 
-// }
+for(let [index,{title,radius,extra}] of planets.entries()){
+    const planetMeshGroup = new ObjectGroup(index+1,title, radius, extra);
+    planetsMap.set(title, planetMeshGroup);
+    sun.add(planetMeshGroup);
+}
 
+//add light: 环境光照和点光源
+const ambientLight = new THREE.AmbientLight(0xaaaaaa, 1);
+const pointLight = new THREE.PointLight(0xffffff, 1);
+pointLight.position.set(0, 0, 0);
 
-// const planets: { title: OBJECTS; radius: number; extra?: THREE.Mesh }[] = [
-//     { title: OBJECTS.MERCURY, radius: 1 },
-//     { title: OBJECTS.VENUS, radius: 2 },
-//     {
-//         title: OBJECTS.EARTH,
-//         radius: 2,
-//         extra: ObjectGroup.createObject(OBJECTS.MOON, new THREE.SphereGeometry(0.5, 64, 32)),
-//     },
-//     { title: OBJECTS.MARS, radius: 1 },
-//     { title: OBJECTS.JUPITER, radius: 5 },
-//     {
-//         title: OBJECTS.SATURN,
-//         radius: 4,
-//         extra: ObjectGroup.createObject(OBJECTS.SATURN_RINGS, new THREE.TorusGeometry(6, 1, 2, 32)),
-//     },
-//     { title: OBJECTS.URANUS, radius: 3 },
-//     { title: OBJECTS.NEPTUNE, radius: 3 },
-// ];
+scene.add(ambientLight, pointLight);
 
-
-
-// const ambientLight = new THREE.AmbientLight(0xaaaaaa, 1);
-// const pointLight = new THREE.PointLight(0xffffff, 1);
-
-// pointLight.position.set(0, 0, 0);
-
-// scene.add(ambientLight, pointLight);
-
-// const starsCoords: number[] = [];
-
-// for (let i = 0; i < 10000; i++) {
-//     const x = THREE.MathUtils.randFloatSpread(1000);
-//     const y = THREE.MathUtils.randFloatSpread(1000);
-//     const z = THREE.MathUtils.randFloatSpread(1000);
-
-//     starsCoords.push(x, y, z);
-// }
-
-
-
-// const sun = ObjectGroup.createObject(OBJECTS.SUN, new THREE.SphereGeometry(11, 64, 32));
-
-// scene.add(sun);
-
-// const planetsMap = new Map<OBJECTS, ObjectGroup>();
-
-// for (const [index, { title, radius, extra }] of planets.entries()) {
-//     const planetGroup = new ObjectGroup(index + 1, title, radius, extra);
-
-//     planetsMap.set(title, planetGroup);
-//     sun.add(planetGroup);
-// }
 
 // const EARTH_YEAR = (2 * Math.PI) / 365;
 

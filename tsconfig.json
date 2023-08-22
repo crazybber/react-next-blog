@@ -11,6 +11,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "target": "ES2022",
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

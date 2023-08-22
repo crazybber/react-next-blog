@@ -2,6 +2,7 @@
     "cSpell.words": [
         "ctabutton",
         "ctabuttongroup",
+        "Phong"
     ],
     "files.associations": {
         "*.css": "tailwindcss"
