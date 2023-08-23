@@ -4,17 +4,17 @@ import * as THREE from 'three';
 
 //define objects
 enum OBJECTS {
-    SUN = 'sun', //太阳
-    MERCURY = 'mercury', //水星
-    VENUS = 'venus', //金星
-    EARTH = 'earth', //地球
-    MOON = 'moon', //月亮
-    MARS = 'mars', //火星
-    JUPITER = 'jupiter', //木星
-    SATURN = 'saturn', //土星
-    SATURN_RINGS = 'saturn_rings', //土星环
-    URANUS = 'uranus',// 天王星
-    NEPTUNE = 'neptune', //海王星
+    SUN, //太阳
+    MERCURY, //水星
+    VENUS, //金星
+    EARTH, //地球
+    MOON, //月亮
+    MARS, //火星
+    JUPITER, //木星
+    SATURN, //土星
+    SATURN_RINGS, //土星环
+    URANUS,// 天王星
+    NEPTUNE, //海王星
 }
 
 
@@ -132,7 +132,6 @@ scene.add(ambientLight, pointLight);
 
 
 // const EARTH_YEAR = (2 * Math.PI) / 365;
-
 // const animate = () => {
 //     sun.rotation.y += 0.001;
 
@@ -146,7 +145,6 @@ scene.add(ambientLight, pointLight);
 //     planetsMap.get(OBJECTS.NEPTUNE)!.rotation.y += EARTH_YEAR / 32;
 
 //     renderer.render(scene, camera);
-
 //     requestAnimationFrame(animate);
 // };
 
